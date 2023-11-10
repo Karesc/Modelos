@@ -1,0 +1,47 @@
+ <html>
+  <head>
+    <title> Modelos matemáticos del crecimiento de cáncer sólido </title>
+  </head>
+  <body>
+    <h1 style="color: purple; font-family: Courier New; text-align: center;"> Modelos matemáticos del crecimiento de cáncer sólido</h1>
+    <p>   Los modelos matemáticos del crecimiento del cáncer son herramientas valiosas en la investigación médica que buscan comprender y predecir la evolución de tumores malignos. Estos modelos utilizan principios matemáticos y datos clínicos para simular cómo los tumores crecen y se desarrollan a lo largo del tiempo. Esta página presenta estimaciones del crecimiento de diferentes tipos de cáncer sólido bajo distintas condiciones de tratamiento modelados mediante ecuaciones diferenciales, se pretende que estas estimaciones puedan ayudar a los investigadores a evaluar la eficacia potencial de terapias y a tomar decisiones informadas para el manejo clínico del cáncer. </p>
+    <style>
+      body {
+            background-image: url("/static/elbueno.png");
+            background-size: cover;
+            color: black ; /* Color de texto */
+            background-color: rgba(0, 0, 0, 0); /* Color de fondo semi-transparente */
+            padding: 20px; /* Espacio interno alrededor del contenido */
+            height: 100%;
+            margin-left: 150px; /* Margen izquierdo */
+            margin-right: 150px; /* Margen derecho */
+            margin-bottom: 50px
+            margin-top: 50px
+            display: grid;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            place-items: center;
+          }
+          
+      img {
+        max-width: 100%;
+        height: auto;
+        width: 50vw;
+      }
+    </style>
+    <img src="{{ url_for('static', filename='tiempos2.png') }}" alt="Tiempos de tratamientos" align="right">
+      <h1>{{ mensaje }}</h1>
+    <hr>
+    <p> Para comenzar, es necesario obtener las dimensiones del tumor en un primer momento, al que consideramos como el tiempo cero, y luego realizar una segunda medición después de un período de tiempo que nos permita estimar la tasa de crecimiento. Estas medidas pueden obtenerse directamente en términos de volumen o a partir de las dimensiones longitud y ancho del tumor sólido. </p>
+    <hr>
+    <form method="POST" action="/opcion">
+      <label for="opcion">¿Conoce el volumen tumoral?</label>
+      <select name="opcion" id="opcion">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

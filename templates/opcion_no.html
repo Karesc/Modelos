@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title> Modelos matemáticos del crecimiento de cáncer sólido </title>
+  </head>
+  <body>
+    <h1 style="color: blue; font-family: Courier New; text-align: center;">Modelos matemáticos del crecimiento de cáncer sólido</h1>
+    <p>   Los modelos matemáticos del crecimiento del cáncer son herramientas valiosas en la investigación médica que buscan comprender y predecir la evolución de tumores malignos. Estos modelos utilizan principios matemáticos y datos clínicos para simular cómo los tumores crecen y se desarrollan a lo largo del tiempo. Esta página presenta estimaciones del crecimiento de diferentes tipos de cáncer sólido bajo distintas condiciones de tratamiento modelados mediante ecuaciones diferenciales, se pretende que estas estimaciones puedan ayudar a los investigadores a evaluar la eficacia potencial de terapias y a tomar decisiones informadas para el manejo clínico del cáncer. </p>
+    <style>
+      body {
+            background-image: url("/static/elbueno.png");
+            background-size: cover;
+            color: black ; /* Color de texto */
+            background-color: rgba(0, 0, 0, 0); /* Color de fondo semi-transparente */
+            padding: 20px; /* Espacio interno alrededor del contenido */
+            height: 100%;
+            margin-left: 150px; /* Margen izquierdo */
+            margin-right: 150px; /* Margen derecho */
+            display: grid;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            place-items: center;
+          }
+          
+      img {
+        max-width: 100%;
+        height: auto;
+        width: 50vw;
+      }
+    </style>
+    <img src="{{ url_for('static', filename='tiempos2.png') }}" alt="Tiempos de tratamientos" align="right">
+      <h1>{{ mensaje }}</h1>
+    <p>Ingrese los valores de crecimiento tumoral y para la simulación de tratamientos:</p>
+    <form method="POST" action="/procesar_no">
+      <label for="l1">Largo de primera medición del tumor (cm):</label>
+      <input type="number" name="l1" id="l1" step="0.0001" required><br><br>
+      <label for="l2">Largo de segunda medición del tumor (cm):</label>
+      <input type="number" name="l2" id="l2" step="0.0001" required><br><br>
+      <label for="a1">Ancho de primera medición del tumor (cm):</label>
+      <input type="number" name="a1" id="a1" step="0.0001" required><br><br>
+      <label for="a2">Ancho de segunda medición del tumor (cm):</label>
+      <input type="number" name="a2" id="a2" step="0.0001" required><br><br>
+      <label for="paso2">Tiempo de la segunda medición del tumor en días (consideramos el día de la primera medición como un tiempo cero):</label>
+      <input type="number" name="paso2" id="paso2"><br><br>
+      <p> Ingrese el número del tipo de cáncer que desea estudiar <br>1. Carcinomas <br>2. Melanomas <br>3. Tumores primarios del cerebro <br>4. Gliomas<br>5. Cáncer de riñon<br>6. Cáncer de páncreas<br>7. Cáncer de útero<br> 8. Carcinoma metastasico de células renales<br>9. Cáncer de ojos <br>10. Cáncer de mama <br>11. Cáncer de pulmón<br>12. Linfomas </p>
+      <label for="tipo"> Tipo de cáncer:</label>
+      <input type="number" name="tipo" id="tipo" step="1" required><br><br>
+      <p> Para simular los tipos de tratamiento requerimos de parámetros especificos de tiempo y cantidad de medicamento, radiación y cantidad células IL-2 y efectoras. </p>
+      <h4 style="color: blue; font-family: Courier New; text-align: center;"> Radioterapia </h4>
+      <label for="rad">Ingrese la cantidad de radiación administrada en Gray:</label>
+      <input type="number" name="rad" id="rad" step="0.0001" required><br><br>
+      <label for="dir1">Ingrese el día en que se realizará la primera radioterapia después de la primera medición del tamaño del tumor:</label>
+      <input type="number" name="dir1" id="dir1" step="0.0001" required><br><br>
+      <label for="dtr">Ingrese el número de días en tratamiento:</label>
+      <input type="number" name="dtr" id="dtr" step="0.0001" required><br><br>
+      <label for="der">Ingrese el número de días entre cada sesión:</label>
+      <input type="number" name="der" id="der" step="0.0001" required><br><br>
+      <label for="ser">Ingrese el número de sesiones:</label>
+      <input type="number" name="ser" id="ser" step="0.0001" required><br><br>
+      <h4 style="color: blue; font-family: Courier New; text-align: center;"> Quimioterapia </h4>
+      <label for="med">Ingrese la concentración de medicamento (&micro;M):</label>
+      <input type="number" name="med" id="med" step="0.0001" required><br><br>
+      <label for="dim">Ingrese el día en que se realizará la primera quimioterapia después de la primera medición del tamaño del tumor:</label>
+      <input type="number" name="dim" id="dim" step="0.0001" required><br><br>
+      <label for="dtm">Ingrese el número de días en tratamiento:</label>
+      <input type="number" name="dtm" id="dtm" step="0.0001" required><br><br>
+      <label for="dem">Ingrese el número de días entre cada sesión:</label>
+      <input type="number" name="dem" id="dem" step="0.0001" required><br><br>
+      <label for="sem">Ingrese el número de sesiones:</label>
+      <input type="number" name="sem" id="sem" step="0.0001" required><br><br>
+      <h4 style="color: blue; font-family: Courier New; text-align: center;"> Inmunoterapia </h4>
+      <label for="cel1">Ingrese la cantidad de células IL-2 (cm<sup>3</sup>):</label>
+      <input type="number" name="cel1" id="cel1" step="0.0001" required><br><br>
+      <label for="cel2">Ingrese la cantidad de células efectoras (cm<sup>3</sup>):</label>
+      <input type="number" name="cel2" id="cel2" step="0.0001" required><br><br>
+      <label for="dic">Ingrese el día en que se realizará la primera inyección de células efectoras y IL-2:</label>
+      <input type="number" name="dic" id="dic" step="0.0001" required><br><br>
+      <label for="dec">Ingrese el número de días entre cada inyección:</label>
+      <input type="number" name="dec" id="dec" step="0.0001" required><br><br>
+      <label for="sec">Ingrese el número de inyecciones:</label>
+      <input type="number" name="sec" id="sec" step="0.0001" required><br><br>
+      <input type="submit" value="Simular tratamientos">
+    </form>
+  </body>
+</html>
+      
+      
+      
+      

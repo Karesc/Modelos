@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title> Modelos matemáticos del crecimiento de cáncer sólido </title>
+  </head>
+  <body>
+    <h1 style="color: blue; font-family: Courier New; text-align: center;">Modelos matemáticos del crecimiento de cáncer sólido</h1>
+    <p> Para utilizar este programa es necesario conocer el volumen del tumor sólido o sus medidas de largo y ancho del tumor en dos tiempos diferentes que nos permitan hacer una estimación del volumen. Además, se requiere del conocimiento de tiempos esenciales para la simulación de tratamientos contra el cáncer. </p>
+       <style>
+      body {
+            background-image: url("/static/elbueno.png");
+            background-size: cover;
+            color: black ; /* Color de texto */
+            background-color: rgba(0, 0, 0, 0); /* Color de fondo semi-transparente */
+            padding: 20px; /* Espacio interno alrededor del contenido */
+            height: 100%;
+            margin-left: 150px; /* Margen izquierdo */
+            margin-right: 150px; /* Margen derecho */
+            display: grid;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            place-items: center;
+          }
+          
+      img {
+        max-width: 100%;
+        height: auto;
+        width: 50vw;
+      }
+    </style>
+    <img src="{{ url_for('static', filename='tiempos2.png') }}" alt="Tiempos de tratamientos" align="right">
+    <h1>{{ mensaje }}</h1>
+    <h1 style="color: purple; font-family: Courier New; text-align: center;"> Simulación del crecimiento del tumor en diferentes condiciones</h1>
+    <h4 style="color: purple; font-family: Courier New; text-align: center; font-size: 14px;"> Observaciones importantes: </h4>
+    <p id="texto" style="font-size: 11px;"> Los resultados aquí presentados consideran una reducción continua de la efectividad de la radiación y el medicamento administrado, los cuales son efectivos para la eliminación de células tumorales. Sin embargo, es importante tener en cuenta que la efectividad de estos tratamientos puede variar en cada persona, y la reducción del tumor puede ser tanto menor como mayor a la que se presenta aquí.
+    Además, el tratamiento de inmunoterapia representa un proceso innovador en constante desarrollo. Por lo tanto, los resultados que se exponen en este estudio toman en consideración múltiples simplificaciones de las interacciones del sistema inmunológico. Es esencial destacar que estas simplificaciones pueden ser perfeccionadas a medida que se avanza en el continuo desarrollo de investigaciones en esta área.<p> 
+  </body>
+  <scrip>
+  {% if plot_url %}
+      <img src="{{plot_url}}" alt="Tiempos de tratamientos" align="right">
+  {% endif %}
+  </scrip>
+</html>
+    
+    
