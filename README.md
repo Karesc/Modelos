@@ -19,11 +19,11 @@ Los cinco modelos tomados para el crecimiento son los siguientes:
 
 - Exponencial: consta de una descripción natural de las etapas tempranas del desarrollo del cáncer donde el crecimiento de la población de células cáncerigenas es proporcional a la población del tumor, este modelo es funcional en las primera etapas antes de que se presente un agotamiento de recursos o la muerte celular por la acción del sistema inmune. Presenta una buena descripción de los carcinomas y melanomas.
                     
--Logistico: este modelo asume una disminución en la relación de crecimiento relativa al tamaño de la población y el máximo tamaño de la población esta limitado por un factor V_maxc conocido como apacidad de carga. A mostrado buenos resultados en tumores primarios del cerebro y gliomas.
+- Logistico: este modelo asume una disminución en la relación de crecimiento relativa al tamaño de la población y el máximo tamaño de la población esta limitado por un factor V_maxc conocido como apacidad de carga. A mostrado buenos resultados en tumores primarios del cerebro y gliomas.
                     
--Von Bertalanffy: intenta balancear la sintesis y la destrucción tomando en cuenta que el crecimiento del tumor es proporcional al área superficial del tumor mientrás llegan constantemente nutrientes y la muerte de esta celulas el proporcional al tamaño. Presento resultados positivos al modelar el crecimiento de tumores de cáncer de riñón, cáncer de páncreas y cáncer de útero 
+- Von Bertalanffy: intenta balancear la sintesis y la destrucción tomando en cuenta que el crecimiento del tumor es proporcional al área superficial del tumor mientrás llegan constantemente nutrientes y la muerte de esta celulas el proporcional al tamaño. Presento resultados positivos al modelar el crecimiento de tumores de cáncer de riñón, cáncer de páncreas y cáncer de útero 
                     
--Lineal: se asume un crecimiento constante de orden cero por la facilidad de propagación del cáncer en su lugar de desarrollo, debido a estas carcateristicas describe adecuadamente los tumores desarrollados en el carcinoma metastásico de células renales y cáncer de ojos.
+- Lineal: se asume un crecimiento constante de orden cero por la facilidad de propagación del cáncer en su lugar de desarrollo, debido a estas carcateristicas describe adecuadamente los tumores desarrollados en el carcinoma metastásico de células renales y cáncer de ojos.
                     
 - Gompertz: este modelo muestra una reducción exponencial de la tasa de crecimiento. Presenta una buena aproximación en el crecimiento del cáncer de mama, cáncer de pulmón y linfomas.
                     
